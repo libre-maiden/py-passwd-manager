@@ -29,6 +29,14 @@ def update():
     conn.commit()
     print('Data is update!')
 
+def delete():
+    name = input('Name: ')
+
+    cur.execute(f"SELECT name FROM data WHERE name = '{name}'")
+    cur.execute(f"DELETE FROM data WHERE name = '{name}'")
+    conn.commit()
+    print("Data is delete")    
+
 def display():   
     table = Table()
     
@@ -49,6 +57,7 @@ Commands:
 "create" - create data
 "display" - display database
 "update" - update data
+"delete" - delete data
 """)
 
     select = input("Select command: ")
@@ -62,6 +71,10 @@ Commands:
 
     elif select == "update":
         update()
-        display()    
+        display()
+
+    elif select == "delete":
+        delete()
+        display()       
 
 main()
