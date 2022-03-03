@@ -1,5 +1,6 @@
 from models import *
-
+from rich.console import Console
+from rich.table import Table
 
 def create():
     name = input('Name: ')
@@ -18,8 +19,18 @@ def create():
         print('Data is exist!')
 
 def display():   
+    table = Table()
+    
+    table.add_column("Name", justify="right", style="cyan")
+    table.add_column("Username", justify="center", style="cyan")
+    table.add_column("Password", justify="left", style="cyan")
+    table.add_column("Description", justify="lieft", style="cyan")
+
     for value in cur.execute("SELECT * FROM data"):
-        print(f"Name: {value[0]}, Username: {value[1]}, Password: {value[2]}, Description: {value[3]}")
+        table.add_row(value[0], value[1], value[2], value[3])
+
+    console = Console()
+    console.print(table)
 
 def main():
     print(""" 
