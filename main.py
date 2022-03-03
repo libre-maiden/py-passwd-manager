@@ -18,13 +18,24 @@ def create():
     else:
         print('Data is exist!')
 
+def update():
+    name = input('Name: ')
+    username = input('Username: ')
+    password = input('Password: ')
+    description = input('Description: ')
+
+    cur.execute(f"SELECT name FROM data WHERE name = '{name}'")        
+    cur.execute(f'UPDATE data SET username = "{username}", password = "{password}", description = "{description}" WHERE name = "{name}"')
+    conn.commit()
+    print('Data is update!')
+
 def display():   
     table = Table()
     
     table.add_column("Name", justify="right", style="cyan")
     table.add_column("Username", justify="center", style="cyan")
     table.add_column("Password", justify="left", style="cyan")
-    table.add_column("Description", justify="lieft", style="cyan")
+    table.add_column("Description", justify="left", style="cyan")
 
     for value in cur.execute("SELECT * FROM data"):
         table.add_row(value[0], value[1], value[2], value[3])
@@ -37,6 +48,7 @@ def main():
 Commands:
 "create" - create data
 "display" - display database
+"update" - update data
 """)
 
     select = input("Select command: ")
@@ -46,6 +58,10 @@ Commands:
         display()
 
     elif select == "display":    
+        display()
+
+    elif select == "update":
+        update()
         display()    
 
 main()
