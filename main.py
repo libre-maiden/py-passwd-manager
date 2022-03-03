@@ -19,7 +19,7 @@ def create():
 
 def display():   
     for value in cur.execute("SELECT * FROM data"):
-        print(value)
+        print(f"Name: {value[0]}, Username: {value[1]}, Password: {value[2]}, Description: {value[3]}")
 
 def main():
     print(""" 
