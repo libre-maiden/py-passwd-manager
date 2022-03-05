@@ -14,9 +14,9 @@ def create():
             VALUES('{name}', '{username}', '{password}', '{description}')""")
         conn.commit()
 
-        print('Data is create!')
+        print('Entry is create!')
     else:
-        print('Data is exist!')
+        print('Entry is exist!')
 
 def update():
     name = input('Name: ')
@@ -27,7 +27,7 @@ def update():
     cur.execute(f"SELECT name FROM data WHERE name = '{name}'")        
     cur.execute(f'UPDATE data SET username = "{username}", password = "{password}", description = "{description}" WHERE name = "{name}"')
     conn.commit()
-    print('Data is update!')
+    print('Entry is update!')
 
 def delete():
     name = input('Name: ')
@@ -35,7 +35,7 @@ def delete():
     cur.execute(f"SELECT name FROM data WHERE name = '{name}'")
     cur.execute(f"DELETE FROM data WHERE name = '{name}'")
     conn.commit()
-    print("Data is delete")    
+    print("Entry is delete")    
 
 def display():   
     table = Table()

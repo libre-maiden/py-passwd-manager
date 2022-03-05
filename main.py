@@ -4,10 +4,10 @@ import time
 def main():
     print(""" 
 Commands:
-"create" - create data
+"create" - create entry
 "display" - display database
-"update" - update data
-"delete" - delete data
+"update" - update entry
+"delete" - delete entry
 "exit" - exit from programm
 """)
 
