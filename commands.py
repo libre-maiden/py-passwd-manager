@@ -20,12 +20,13 @@ def create():
 
 def update():
     name = input('Name: ')
+    new_name = input('New name: ')
     username = input('Username: ')
     password = input('Password: ')
     description = input('Description: ')
 
     cur.execute(f"SELECT name FROM data WHERE name = '{name}'")        
-    cur.execute(f'UPDATE data SET username = "{username}", password = "{password}", description = "{description}" WHERE name = "{name}"')
+    cur.execute(f'UPDATE data SET name = "{new_name}", username = "{username}", password = "{password}", description = "{description}" WHERE name = "{name}"')
     conn.commit()
     print('Entry is update!')
 
